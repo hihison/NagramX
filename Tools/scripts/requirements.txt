@@ -1,2 +1,2 @@
-git+https://github.com/risin42/pyrogram
+git+https://github.com/KurimuzonAkuma/kurigram
 PyroTgCrypto==1.2.7
