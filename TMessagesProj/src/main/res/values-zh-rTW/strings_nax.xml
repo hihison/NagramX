@@ -71,8 +71,10 @@
     <string name="UnshadowBan">解除靜默封鎖</string>
     <string name="ShadowBanAdded">已新增到**使用者過濾器**。</string>
     <string name="ShadowBanRemoved">已從**使用者過濾器**中移除。</string>
+    <string name="ShadowBanChannelAdded">已新增至**頻道過濾器**。</string>
+    <string name="ShadowBanChannelRemoved">已從**頻道過濾器**中移除。</string>
     <string name="botCommandConfirmTitle">確認傳送</string>
-    <string name="botCommandConfirmText">您確定要傳送此指令嗎？\n\n%s</string>
+    <string name="botCommandConfirmText">您確定要發送此指令嗎？\n\n%s</string>
     <string name="MessageSavingSaveMedia">儲存媒體</string>
     <string name="MessageSavingSaveMediaHint">點擊以查看更多選項。</string>
     <string name="MessageSavingSaveMediaInPrivateChats">私聊</string>
@@ -81,10 +83,6 @@
     <string name="MessageSavingSaveMediaInPublicGroups">公開群組</string>
     <string name="MessageSavingSaveMediaInPrivateGroups">私有群組</string>
     <string name="TelegramUIAutoTranslate">自動翻譯</string>
-    <string name="TranslatorMode">手動翻譯顯示類型</string>
-    <string name="TranslatorModeAppend">追加</string>
-    <string name="TranslatorModeInline">替換</string>
-    <string name="TranslatorModePopup">彈窗</string>
     <string name="Translated">已翻譯</string>
     <string name="ProviderRealMicrosoftTranslator">微軟翻譯</string>
     <string name="TranslatorSettings">翻譯</string>
@@ -118,7 +116,7 @@
     <string name="ColoredBackgroundNotice">回覆，引用，連結預覽的背景色和 Emoji。</string>
     <string name="ChatMenu">聊天選單</string>
     <string name="MediaViewerMenu">媒體檢視器選單</string>
-    <string name="MenuAndButtons">選單和按鈕</string>
+    <string name="MenuAndButtons">菜單和按鈕</string>
     <string name="SettingsNax">設定</string>
     <string name="AccountSettingsNax">帳號設定</string>
     <string name="HideReactions">隱藏表情回應</string>
@@ -133,7 +131,7 @@
     <string name="DisableGhostMode">停用幽靈模式</string>
     <string name="GhostModeEnabled">幽靈模式已啟用</string>
     <string name="GhostModeDisabled">幽靈模式已停用</string>
-    <string name="GhostModeInDrawer">主頁快捷方式</string>
+    <string name="GhostModeInDrawer">捷徑</string>
     <string name="GhostModeStatusIndicator">幽靈模式指示器</string>
     <string name="DontSendReadMessagePackets">不顯示訊息已讀</string>
     <string name="DontReadStoriesPackets">不顯示動態已讀</string>
@@ -185,7 +183,7 @@
     <string name="DebugMenuForceForumTabs">強制使話題群組採用“標籤”佈局</string>
     <string name="DebugMenuDoNotForceForumTabs">取消強制使話題群組採用“標籤”佈局</string>
     <string name="DebugMenuCleanAppUpdate">清除應用更新</string>
-    <string name="DebugMenuMakeMemoryDump">記憶體轉儲</string>
+    <string name="DebugMenuMakeMemoryDump">記憶體傾印</string>
     <string name="DebugMenuShowFrameMetrics">顯示影格指標</string>
     <string name="DebugMenuHideFrameMetrics">隱藏影格指標</string>
     <string name="TranslateMessageLLM">AI 翻譯</string>
@@ -208,7 +206,6 @@
     <string name="NoCaptionForward">無說明轉發</string>
     <string name="PreferCommonGroupsTab">首選群組標籤</string>
     <string name="PreferCommonGroupsTabNotice">在個人資料頁面自動選擇“群組”標籤而不是“禮物”。</string>
-    <string name="SendHighQualityPhoto">傳送高品質圖片</string>
     <string name="GroupedMessageMenu">分組訊息選單</string>
     <string name="GroupedMessageMenuNotice">將主要操作選項移至訊息選單的底部。</string>
     <string name="CopySticker">複製貼圖</string>
@@ -254,7 +251,7 @@
     <string name="PinnedReactions_Limit">最多可以選擇 %d 個表情回應。</string>
     <string name="PinnedReactions_Type">不支援此 Emoji。</string>
     <string name="PinnedReactions_Apply">更新置頂的表情回應</string>
-    <string name="HideStoriesFromHeader">在標題欄中隱藏動態</string>
+    <string name="HideStoriesFromHeader">在標題列中隱藏動態</string>
     <string name="DisableAvatarBlur">停用頭像模糊</string>
     <string name="ExportSettingsIncludeApiKeys">包含 API 金鑰</string>
     <string name="DisableInAppBrowserGestures">停用手勢</string>
@@ -319,4 +316,19 @@
     <string name="MainTabsSettingsHeader">主標籤頁</string>
     <string name="MainTabsHideTitles">隱藏標題</string>
     <string name="MainTabsHideContacts">隱藏聯絡人標籤頁</string>
+    <string name="PasscodeShowMessagePreviewWhenLocked">顯示訊息預覽</string>
+    <string name="PasscodeShowMessagePreviewWhenLockedAbout">在密碼鎖定狀態下仍顯示通知內容。</string>
+    <string name="StickerSavedHint">貼圖已儲存至相冊</string>
+    <string name="StickerCopied">貼圖已複製到剪貼簿</string>
+    <string name="StrokeOnViews">眩光效果</string>
+    <string name="HideBottomNavigationBar">隱藏底部導覽列</string>
+    <string name="TranslatorMode">追加</string>
+    <string name="TranslatorWithOriginalTextOff">關閉</string>
+    <string name="TranslatorWithOriginalTextManualOnly">手動</string>
+    <string name="TranslatorWithOriginalTextOn">開啟</string>
+    <string name="CenterActionBarTitleOn">開啟</string>
+    <string name="CenterActionBarTitleOff">關閉</string>
+    <string name="TabletModeOn">開啟</string>
+    <string name="TabletModeOff">關閉</string>
+    <string name="HideDialogsSearchField">隱藏搜尋欄</string>
 </resources>

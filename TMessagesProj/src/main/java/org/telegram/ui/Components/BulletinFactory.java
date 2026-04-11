@@ -63,6 +63,7 @@ import java.util.List;
 
 import tw.nekomimi.nekogram.NekoConfig;
 import tw.nekomimi.nekogram.helpers.MainTabsHelper;
+import xyz.nextalone.nagram.NaConfig;
 
 public final class BulletinFactory {
 
@@ -1053,6 +1054,10 @@ public final class BulletinFactory {
 
     public Bulletin create(Bulletin.Layout layout, int duration) {
         if (fragment != null) {
+            FrameLayout containerLayout = BulletinFactory.resolveBulletinContainer(fragment);
+            if (containerLayout != null) {
+                return Bulletin.make(containerLayout, layout, duration);
+            }
             return Bulletin.make(fragment, layout, duration);
         } else {
             return Bulletin.make(containerLayout, layout, duration);
@@ -1133,7 +1138,7 @@ public final class BulletinFactory {
         }
 
         layout.textView.setText(text);
-        FrameLayout containerLayout = resolveMuteBulletinContainer(fragment);
+        FrameLayout containerLayout = resolveBulletinContainer(fragment);
         if (containerLayout != null) {
             return Bulletin.make(containerLayout, layout, Bulletin.DURATION_SHORT);
         }
@@ -1161,12 +1166,12 @@ public final class BulletinFactory {
         return createMuteBulletin(fragment, muted ? NotificationsController.SETTING_MUTE_FOREVER : NotificationsController.SETTING_MUTE_UNMUTE, 0, resourcesProvider);
     }
 
-    private static FrameLayout resolveMuteBulletinContainer(BaseFragment fragment) {
+    public static FrameLayout resolveBulletinContainer(BaseFragment fragment) {
         if (fragment instanceof DialogsActivity da && da.hasMainTabs) {
             return Bulletin.BulletinWindow.make(fragment.getParentActivity(), new Bulletin.Delegate() {
                 @Override
                 public int getBottomOffset(int tag) {
-                    return dp(MainTabsHelper.getMainTabsHeightWithMargins());
+                    return NaConfig.INSTANCE.getHideBottomNavigationBar().Bool() ? 0 : dp(MainTabsHelper.getMainTabsHeightWithMargins());
                 }
             });
         }
@@ -1287,7 +1292,7 @@ public final class BulletinFactory {
     }
 
     public boolean showForwardedBulletinWithTag(long did, int messagesCount) {
-        if (!UserConfig.getInstance(UserConfig.selectedAccount).isPremium()) {
+        if (!UserConfig.getInstance(UserConfig.selectedAccount).isPremium() || fragment == null) {
             return false;
         }
         final Bulletin.LottieLayoutWithReactions layout = new Bulletin.LottieLayoutWithReactions(fragment, messagesCount);
@@ -1463,21 +1468,6 @@ public final class BulletinFactory {
         } else {
             layout.setAnimation(R.raw.ic_unban, "Main", "Finger 1", "Finger 2", "Finger 3", "Finger 4");
             text = LocaleController.getString(R.string.UserUnblocked);
-        }
-        layout.textView.setText(AndroidUtilities.replaceTags(text));
-        return Bulletin.make(fragment, layout, Bulletin.DURATION_SHORT);
-    }
-
-    @CheckResult
-    public static Bulletin createBanChannelBulletin(BaseFragment fragment, boolean banned) {
-        final Bulletin.LottieLayout layout = new Bulletin.LottieLayout(fragment.getParentActivity(), fragment.getResourceProvider());
-        final String text;
-        if (banned) {
-            layout.setAnimation(R.raw.ic_ban, "Hand");
-            text = LocaleController.getString(R.string.ChannelBlocked);
-        } else {
-            layout.setAnimation(R.raw.ic_unban, "Main", "Finger 1", "Finger 2", "Finger 3", "Finger 4");
-            text = LocaleController.getString(R.string.ChannelUnblocked);
         }
         layout.textView.setText(AndroidUtilities.replaceTags(text));
         return Bulletin.make(fragment, layout, Bulletin.DURATION_SHORT);
